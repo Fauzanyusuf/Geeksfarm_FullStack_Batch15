@@ -23,7 +23,11 @@ async function readData() {
 }
 
 async function saveData(data) {
-  await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2));
+  try {
+    await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2));
+  } catch (err) {
+    console.error("Error save data: " + err);
+  }
 }
 
 module.exports = {
