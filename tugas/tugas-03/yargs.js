@@ -50,7 +50,6 @@ const validateAndUpdate = (contact, updates) => {
 
 async function main() {
   await initDataFile();
-  const data = await readData();
 
   yargs(hideBin(process.argv))
     // ADD
@@ -67,6 +66,8 @@ async function main() {
         email: { demandOption: true, type: "string", describe: "Email" },
       },
       async handler(argv) {
+        const data = await readData();
+
         if (
           !validateName(argv.name) ||
           !validatePhone(argv.phone) ||
@@ -88,6 +89,8 @@ async function main() {
       command: "list",
       describe: "Menampilkan semua data",
       async handler() {
+        const data = await readData();
+
         data.length ? console.table(data) : console.log("Data kosong.");
       },
     })
@@ -104,8 +107,10 @@ async function main() {
         },
       },
       async handler(argv) {
+        const data = await readData();
+
         const keyword = argv.search.toLowerCase();
-        const contact = findContact(await readData(), keyword);
+        const contact = findContact(data, keyword);
 
         contact ? console.log(contact) : console.log("Data tidak ditemukan");
       },
@@ -126,6 +131,7 @@ async function main() {
         email: { type: "string", describe: "Email baru" },
       },
       async handler(argv) {
+        const data = await readData();
         const keyword = argv.keyword.toLowerCase();
         const index = findContactIndex(data, keyword);
 
@@ -150,6 +156,7 @@ async function main() {
         },
       },
       async handler(argv) {
+        const data = await readData();
         const keyword = argv.keyword.toLowerCase();
         const index = findContactIndex(data, keyword);
 
