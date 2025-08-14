@@ -1,7 +1,9 @@
 const fs = require("fs").promises;
-const { ensureDataFile } = require("../utils/fileUtils");
+const { ensureDataFile } = require("./fileUtils");
+const path = require("path");
 
-const DATA_FILE = require("path").join(__dirname, "data.json");
+const DATA_FOLDER = path.join(__dirname, "../data");
+const DATA_FILE = path.join(DATA_FOLDER, "data.json");
 
 async function initDataFile() {
   await ensureDataFile(DATA_FILE);
