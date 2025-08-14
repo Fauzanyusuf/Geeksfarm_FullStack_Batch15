@@ -1,6 +1,6 @@
 const validator = require("validator");
 const { getValidatedInput, closeInput } = require("./utils/inputValidator");
-const { initDataFile, readData, saveData } = require("./utils/data");
+const { initDataFile, readData, saveData } = require("./utils/fileUtils");
 
 async function main() {
   await initDataFile();
