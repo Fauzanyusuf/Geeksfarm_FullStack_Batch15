@@ -11,6 +11,7 @@
     "tugas1": "node tugas/tugas-01.js"
   },
   "dependencies": {
+    "express": "^5.1.0",
     "validator": "^13.15.15",
     "yargs": "^18.0.0"
   }
