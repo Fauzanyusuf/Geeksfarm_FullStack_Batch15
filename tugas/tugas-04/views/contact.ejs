@@ -1,0 +1,23 @@
+<%- contentFor('body') %>
+<main>
+  <h1>This is <%= title %></h1>
+  <p>Wew</p>
+
+  <% if (contacts.length > 0) { %>
+
+  <table border="1">
+    <tr>
+      <th>name</th>
+      <th>phone</th>
+    </tr>
+    <% contacts.forEach(contact => { %>
+    <tr>
+      <td><%= contact.name %></td>
+      <td><%= contact.phone %></td>
+    </tr>
+    <% }) %>
+  </table>
+  <% } else { %>
+  <p>Data tidak tersedia</p>
+  <% } %>
+</main>

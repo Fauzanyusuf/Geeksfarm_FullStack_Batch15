@@ -91,7 +91,9 @@ async function main() {
       async handler() {
         const data = await readData();
 
-        data.length ? console.table(data) : console.log("Data kosong.");
+        data.length
+          ? (console.table(data), console.log(data))
+          : console.log("Data kosong.");
       },
     })
 
