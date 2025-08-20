@@ -1,0 +1,271 @@
+<main>
+  <h1>This is <%= title %></h1>
+
+  <button
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#addModal"
+    data-action="add"
+  >
+    Create New Contact
+  </button>
+
+  <% if (data.length > 0) { %>
+
+  <table class="table">
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>E-Mail</th>
+      <th>Action</th>
+    </tr>
+    <% data.forEach((contact,i) => { %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= contact.name %></td>
+      <td><%= contact.phone %></td>
+      <td><%= contact.email %></td>
+      <td>
+        <button
+          class="btn btn-outline-primary btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#detailModal"
+          data-name="<%= contact.name %>"
+          data-phone="<%= contact.phone %>"
+          data-email="<%= contact.email %>"
+        >
+          Details
+        </button>
+        <button
+          class="btn btn-outline-warning btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#editModal"
+          data-index="<%= i %>"
+          data-name="<%= contact.name %>"
+          data-phone="<%= contact.phone %>"
+          data-email="<%= contact.email %>"
+        >
+          Edit
+        </button>
+        <form
+          action="/contact/delete/<%= i %>"
+          method="POST"
+          style="display: inline"
+        >
+          <button class="btn btn-outline-danger btn-sm" type="submit">
+            Delete
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </table>
+  <% } else { %>
+  <p>Data not available</p>
+  <% } %>
+</main>
+
+<div
+  class="modal fade"
+  id="addModal"
+  tabindex="-1"
+  aria-labelledby="addModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addModalLabel">New Contacts</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/contact/add" method="POST">
+          <div class="mb-3">
+            <label for="name" class="col-form-label">Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="col-form-label">Phone Number:</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              name="phone"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="col-form-label">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save Contact</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="detailModal"
+  tabindex="-1"
+  aria-labelledby="detailModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="detailModalLabel">Detail Kontak</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Nama:</strong> <span id="detail-name"></span></p>
+        <p><strong>Nomor Telepon:</strong> <span id="detail-phone"></span></p>
+        <p><strong>Email:</strong> <span id="detail-email"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="editModal"
+  tabindex="-1"
+  aria-labelledby="editModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editModalLabel">Edit Kontak</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="editForm" method="POST">
+          <div class="mb-3">
+            <label for="edit-name" class="col-form-label">Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="edit-name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="edit-phone" class="col-form-label">Phone Number:</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="edit-phone"
+              name="phone"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="edit-email" class="col-form-label">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="edit-email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const detailModal = document.getElementById("detailModal");
+  detailModal.addEventListener("show.bs.modal", (event) => {
+    const button = event.relatedTarget;
+
+    const name = button.getAttribute("data-name");
+    const phone = button.getAttribute("data-phone");
+    const email = button.getAttribute("data-email");
+
+    const modalName = detailModal.querySelector("#detail-name");
+    const modalPhone = detailModal.querySelector("#detail-phone");
+    const modalEmail = detailModal.querySelector("#detail-email");
+
+    modalName.textContent = name;
+    modalPhone.textContent = phone;
+    modalEmail.textContent = email;
+  });
+
+  const editModal = document.getElementById("editModal");
+  editModal.addEventListener("show.bs.modal", (event) => {
+    const button = event.relatedTarget;
+
+    const index = button.getAttribute("data-index");
+    const name = button.getAttribute("data-name");
+    const phone = button.getAttribute("data-phone");
+    const email = button.getAttribute("data-email");
+
+    const editForm = editModal.querySelector("#editForm");
+    const editName = editModal.querySelector("#edit-name");
+    const editPhone = editModal.querySelector("#edit-phone");
+    const editEmail = editModal.querySelector("#edit-email");
+
+    editName.value = name;
+    editPhone.value = phone;
+    editEmail.value = email;
+
+    editForm.action = `/contact/edit/${index}`;
+  });
+</script>
