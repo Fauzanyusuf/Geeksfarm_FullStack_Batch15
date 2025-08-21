@@ -47,6 +47,7 @@
             class="btn btn-outline-primary btn-sm"
             data-bs-toggle="modal"
             data-bs-target="#detailModal"
+            data-index="<%= contact.id %>"
             data-name="<%= contact.name %>"
             data-phone="<%= contact.phone %>"
             data-email="<%= contact.email %>"
@@ -57,7 +58,7 @@
             class="btn btn-outline-warning btn-sm"
             data-bs-toggle="modal"
             data-bs-target="#editModal"
-            data-index="<%= i %>"
+            data-index="<%= contact.id %>"
             data-name="<%= contact.name %>"
             data-phone="<%= contact.phone %>"
             data-email="<%= contact.email %>"
@@ -65,7 +66,7 @@
             Edit
           </button>
           <form
-            action="/contact/delete/<%= i %>"
+            action="/contact/delete/<%= contact.id %>"
             method="POST"
             style="display: inline"
           >

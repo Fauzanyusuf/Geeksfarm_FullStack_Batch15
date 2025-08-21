@@ -1,7 +1,42 @@
 [
   {
-    "name": "John Doer",
+    "name": "Fauzan Yusuf",
     "phone": "08123213123",
-    "email": "joseph@mail.com"
+    "email": "fauzanyusuf20@gmail.com"
+  },
+  {
+    "name": "Resti Meita",
+    "phone": "08213123122",
+    "email": "restimeita@gmail.com"
+  },
+  {
+    "name": "fdfasdf",
+    "phone": "08321321312",
+    "email": "fauas@gmai.co"
+  },
+  {
+    "name": "Fauzan Yusuf",
+    "phone": "081232131231",
+    "email": "fauzanyusuf20@gmail.co"
+  },
+  {
+    "name": "John Doer",
+    "phone": "082312312312",
+    "email": "johndoer@gmail.com"
+  },
+  {
+    "name": "Example",
+    "phone": "08111111111",
+    "email": "example20@gmail.com"
+  },
+  {
+    "name": "Example",
+    "phone": "081111111111",
+    "email": "example20@gmail.co"
+  },
+  {
+    "name": "Ea",
+    "phone": "081111111112",
+    "email": "fauzanyusuf20@gmail.coma"
   }
 ]
