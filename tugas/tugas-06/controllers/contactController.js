@@ -83,7 +83,6 @@ exports.updateContact = async (req, res) => {
 
 exports.deleteContact = async (req, res) => {
   const { id } = req.params;
-  const contacts = await getContacts();
 
   try {
     await pool.query("DELETE FROM contacts WHERE id = $1", [id]);
