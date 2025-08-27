@@ -34,6 +34,9 @@ class SearchInput extends Component {
       const data = await searchImages(search);
       setImages(data.results);
       setQuery(search);
+
+      console.log("Data: ", data);
+      console.log("Data Results: ", data.results);
     } catch (err) {
       console.error("Failed to fetch images:", err);
       alert("Failed to fetch images. Please try again.");
@@ -69,8 +72,16 @@ class Images extends Component {
     return (
       <>
         {query && (
-          <h1 className="mt-6 text-2xl text-center underline">
-            Result for: {query}
+          <h1 className="mt-6 text-2xl text-center">
+            Result for:{" "}
+            <a
+              href={`https://unsplash.com/s/photos/${query}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-700 underline"
+            >
+              {query}
+            </a>
           </h1>
         )}
         <div className="grid items-stretch gap-4 px-8 mx-auto my-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-11/12">
@@ -92,7 +103,7 @@ class Images extends Component {
                     {img.user?.name || "Unknown"}
                   </div>
                   <div className="text-sm text-gray-600">
-                    {img.alt_description || "No description"}
+                    {img.description || img.alt_description || "No Description"}
                   </div>
                 </div>
               </div>

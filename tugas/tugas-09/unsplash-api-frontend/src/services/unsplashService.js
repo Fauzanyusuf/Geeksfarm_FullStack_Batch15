@@ -3,7 +3,7 @@ import axios from "axios";
 const API_KEY = import.meta.env.VITE_UNSPLASH_API_KEY;
 const BASE_URL = "https://api.unsplash.com";
 
-export async function searchImages(query, page = 1, per_page = 10) {
+export async function searchImages(query, page = 1, per_page = 12) {
   try {
     const res = await axios.get(`${BASE_URL}/search/photos`, {
       params: {
