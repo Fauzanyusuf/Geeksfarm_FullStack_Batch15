@@ -165,8 +165,15 @@ class App extends Component {
     const { query, currentVideo, loading, error } = this.state;
 
     return (
-      <div className="min-h-screen bg-gray-50 p-6">
+      <div className="min-h-dvh bg-gray-50 p-6">
         <header className="mb-6">
+          <div className="w-full flex justify-center mb-6">
+            <a href="/" className="block">
+              <h1 className="text-2xl font-bold bg-red-600 text-white rounded-lg px-6 py-3 shadow text-center">
+                Youtube API
+              </h1>
+            </a>
+          </div>
           <form
             onSubmit={this.handleSearch}
             className="flex items-center gap-2 bg-white rounded-full shadow px-4 py-2 border border-gray-200"
@@ -195,7 +202,7 @@ class App extends Component {
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-red-600 text-white rounded-full shadow hover:bg-red-700 transition"
+              className="px-4 py-2 bg-red-600 text-white rounded-full shadow hover:bg-red-700 transition cursor-pointer"
             >
               Search
             </button>

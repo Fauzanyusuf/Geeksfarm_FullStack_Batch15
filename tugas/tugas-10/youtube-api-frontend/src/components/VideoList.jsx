@@ -13,7 +13,7 @@ class VideoList extends Component {
             <div
               key={vid}
               onClick={() => onSelect(video)}
-              className="flex gap-3 items-start cursor-pointer hover:bg-gray-100 p-2 rounded-xl transition group"
+              className="flex gap-3 items-start cursor-pointer hover:bg-gray-300 p-2 rounded-xl transition group"
             >
               <img
                 src={video.snippet.thumbnails.medium.url}
