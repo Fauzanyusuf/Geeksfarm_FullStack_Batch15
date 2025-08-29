@@ -153,7 +153,7 @@ export default function UserForm() {
 
   // Render form dengan dua kolom (responsive)
   return (
-    <Card className="w-full max-w-7xl mx-auto mt-6 shadow-lg px-6">
+    <Card className="w-full mx-auto mt-6 shadow-lg">
       <CardHeader>
         <CardTitle>User Information</CardTitle>
         <CardDescription>
@@ -165,7 +165,7 @@ export default function UserForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="flex flex-col gap-8 md:grid md:grid-cols-2"
           >
             {/* Kolom kiri: data dasar user */}
             <div className="space-y-4">
@@ -319,7 +319,7 @@ export default function UserForm() {
         </Form>
 
         {/* Preview data form secara realtime */}
-        <pre className="mt-6 p-4 bg-muted rounded-lg text-sm text-foreground overflow-auto">
+        <pre className="p-4 mt-6 overflow-auto text-sm rounded-lg bg-muted text-foreground">
           {JSON.stringify(watchedValues, null, 2)}
         </pre>
       </CardContent>
