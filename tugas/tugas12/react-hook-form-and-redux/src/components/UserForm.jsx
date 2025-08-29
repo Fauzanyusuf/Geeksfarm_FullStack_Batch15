@@ -119,7 +119,6 @@ export default function UserForm() {
     defaultValues: {
       firstName: "",
       lastName: "",
-      email: "",
       employed: false,
       education: "",
       expertise: [],
@@ -158,7 +157,7 @@ export default function UserForm() {
         <CardTitle>User Information</CardTitle>
         <CardDescription>
           Please fill out the form below. Fields are divided into two sections
-          for easier navigation.
+          for large screen for easier navigation.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -179,12 +178,6 @@ export default function UserForm() {
                 name="lastName"
                 label="Last Name"
                 placeholder="e.g. Doe"
-                control={form.control}
-              />
-              <TextInputField
-                name="email"
-                label="Email"
-                placeholder="john.doe@example.com"
                 control={form.control}
               />
 
