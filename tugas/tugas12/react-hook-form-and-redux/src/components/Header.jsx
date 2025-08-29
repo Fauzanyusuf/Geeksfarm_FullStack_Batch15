@@ -3,6 +3,7 @@ import { Link } from "react-router";
 const links = [
   { linkName: "Home", linkURL: "/" },
   { linkName: "Counter", linkURL: "/counter" },
+  { linkName: "Form", linkURL: "/form" },
   { linkName: "Contact", linkURL: "/contact" },
   { linkName: "Youtube", linkURL: "/youtube" },
 ];
